@@ -122,5 +122,60 @@ abstract class Controller
 		
 		return true;		
 	}
-}
+
+	/**
+	 * Funcion que nos devuelve el tiempo transcurrido (humano)
+	 * @param  [int] $time [tiempo en formato unix usando strtotime()]
+	 * @return [string]       [tiempo transcurrido]
+	 */
+	public function timeago($time) {
+		define("SECOND", 1);
+	    define("MINUTE", 60 * SECOND);
+	    define("HOUR", 60 * MINUTE);
+	    define("DAY", 24 * HOUR);
+	    define("MONTH", 30 * DAY);
+            $delta = time() - $time;
+    
+            if ($delta < 1 * MINUTE)
+            {
+                    return $delta == 1 ? "en este momento" : "hace " . $delta . " segundos ";
+            }
+            if ($delta < 2 * MINUTE)
+            {
+                    return "hace un minuto";
+            }
+            if ($delta < 45 * MINUTE)
+            {
+                    return "hace " . floor($delta / MINUTE) . " minutos";
+            }
+            if ($delta < 90 * MINUTE)
+            {
+                    return "hace una hora";
+            }
+            if ($delta < 24 * HOUR)
+            {
+                    return "hace " . floor($delta / HOUR) . " horas";
+            }
+            if ($delta < 48 * HOUR)
+            {
+                    return "ayer";
+            }
+            if ($delta < 30 * DAY)
+            {
+                    return "hace " . floor($delta / DAY) . " dias";
+            }
+            if ($delta < 12 * MONTH)
+            {
+                    $months = floor($delta / DAY / 30);
+                    return $months <= 1 ? "el mes pasado" : "hace " . $months . " meses";
+            }
+            else
+            {
+                    $years = floor($delta / DAY / 365);
+                    return $years <= 1 ? "el a&ntilde;o pasado" : "hace " . $years . " a&ntilde;os";
+            }
+    
+    }
+
+}//end Class
 ?>
