@@ -31,6 +31,10 @@ class View extends Smarty
 		$this->cache_dir=ROOT.'tmp'.DS.'cache'.DS;
 		$this->compile_dir=ROOT.'tmp'.DS.'template'.DS;
 
+		/**
+		 * Menu configurable que carga en la web si imprimes $_layoutParams['menu']
+		 * @var array
+		 */
 		$menu=array(
 			array(
 				'id' => 'Projects',
@@ -64,6 +68,11 @@ class View extends Smarty
 		if(count($this->_js)){
 			$js=$this->_js;
 		}
+
+		/**
+		 * Array contenedor de variables configurables de la web
+		 * @var array
+		 */
 		$_layoutParams=array(
 			'ruta_css' => SITE_URL.'views/layout/'.$this->_layout.'/css/',
 			'ruta_img' => SITE_URL.'views/layout/'.$this->_layout.'/img/',

@@ -31,7 +31,7 @@ class Bootstrap
 				call_user_func(array($controller,$metodo));
 			}
 		}else{
-			throw new Exception("No encontrado");
+			throw new Exception("Controlador no encontrado < $controller >");
 			
 		}
 	}

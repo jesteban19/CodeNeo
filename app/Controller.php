@@ -18,6 +18,11 @@ abstract class Controller
 	}
 	abstract public function index();
 
+	/**
+	 * Carga el modelo haciendo un "require_once (nameModel.php)"
+	 * @param  [type] $modelo [nombre del modelo a cargar]
+	 * @return [type]         [Incluye el modelo mostrando y cargando las variables]
+	 */
 	protected function loadModel($modelo)
 	{
 		$modelo=$modelo.'Model';
@@ -28,9 +33,10 @@ abstract class Controller
 			$modelo=new $modelo;
 			return $modelo;
 		}else{
-			throw new Exception("Error de modelo", 1);		
+			throw new Exception("Error en el modelo $modelo", 1);		
 		}
 	}
+
 
 	protected function getLibrary($libreria)
 	{
