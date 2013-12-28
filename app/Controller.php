@@ -44,7 +44,7 @@ abstract class Controller
 		if(is_readable($rutaLibreria)){
 			require_once $rutaLibreria;
 		}else{
-			throw new Exception("Error al cargar la libreria ".$librera, 1);
+			throw new Exception("Error al cargar la libreria ".$libreria, 1);
 		}
 	}
 
@@ -176,6 +176,34 @@ abstract class Controller
             }
     
     }
+
+    /**
+     * Limpia titulos por url limpias para guardarlos como vinculos
+     * @param  [string] $str [le pasamos un texto y lo convertira en url]
+     * @return [string]      [description]
+     */
+    function makeUrl($str) {
+		//Quitar tildes y ñ
+		$tildes = array('á','é','í','ó','ú','ñ','Á','É','Í','Ó','Ú','Ñ');
+		$vocales = array('a','e','i','o','u','n','A','E','I','O','U','N');
+		$str = str_replace($tildes,$vocales,$str);
+	 
+		//Quitar símbolos
+		$simbolos = array("=","¿","?","¡","!","'","%","$","€","(",")","[","]","{","}","*","+","·",".","&lt; ","&gt;");
+		$i = 0;
+		while($simbolos[$i]){
+		$str = str_replace($simbolos[$i], "", $str);
+		$i++;
+		}
+	 
+		//Quitar espacios
+		$str = str_replace(" ","_",$str);
+	 
+		//Pasar a minúsculas
+		$str = strtolower($str);
+	 
+		return $str;
+	}
 
 }//end Class
 ?>

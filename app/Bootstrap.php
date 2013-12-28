@@ -22,7 +22,8 @@ class Bootstrap
 			if(is_callable(array($controller,$metodo))){
 				$metodo=$peticion->getMetodo();
 			}else{
-				$metodo='index';
+				array_push($args,$metodo);
+				$metodo='index';			
 			}
 
 			if(isset($args)){

@@ -38,9 +38,9 @@ class Request{
 		}
 
 		if(!$this->_metodo){
-			$this->_metodo='index';
+			$this->_metodo='index';			
 		}
-
+		
 		if(!isset($this->_argumentos)){
 			$this->_argumentos=array();
 		}
