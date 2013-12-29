@@ -23,7 +23,7 @@ class Request{
 				$this->_argumentos=$url;
 			}
 		}else{ //cuando no podemos activar el .htaccess usamos este metodo.
-			$url=$_SERVER['PATH_INFO'];
+			$url=(isset($_SERVER['PATH_INFO'])?$_SERVER['PATH_INFO'] : '');
 			//eliminar el /index.php
 			$url=preg_replace('/^(\/)/','',$url);
 			$url=explode('/',$url);
